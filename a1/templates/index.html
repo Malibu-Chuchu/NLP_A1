@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>st124952 Guess The Word</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #6e7f94, #3a4e6c);
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            width: 80%;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            outline: none;
+            margin-right: 15px;
+            background-color: #f1f1f1;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 30px;
+            background-color: #3498db;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #results {
+            margin-top: 30px;
+        }
+
+        #results-header {
+            background-color: #2ecc71;
+            color: #ffffff;
+            font-weight: bold;
+            padding: 12px;
+            border-radius: 10px 10px 0 0;
+            font-size: 1.5em;
+            display: none;
+        }
+
+        #results-body {
+            background-color: #f8f8f8;
+            color: #333;
+            padding: 20px;
+            border-radius: 0 0 10px 10px;
+            display: none;
+        }
+
+        .result-item {
+            padding: 8px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            margin: 5px 0;
+            font-size: 1.1em;
+        }
+
+        .result-item:hover {
+            background-color: #bdc3c7;
+        }
+
+        .error {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>That's What I LIKE</h1>
+        <form method="POST" id="searchForm" class="search-box">
+            <input type="text" name="search" id="searchInput" placeholder="Search for a word..." required>
+            <button type="submit">Search</button>
+        </form>
+        <div id="results">
+            <div id="results-header" class="results-header">Top 10 Similar Results</div>
+            <div id="results-body" class="results-body"></div>
+        </div>
+        <div id="error-message" class="error"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById("searchForm");
+        const resultsHeader = document.getElementById("results-header");
+        const resultsBody = document.getElementById("results-body");
+        const errorDiv = document.getElementById("error-message");
+
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            const inputWord = document.getElementById("searchInput").value;
+
+            try {
+                const response = await fetch("/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ search: inputWord }),
+                });
+
+                if (response.ok) {
+                    const similarWords = await response.json();
+
+                    if (Array.isArray(similarWords)) {
+                        errorDiv.innerHTML = "";
+                        resultsHeader.style.display = "block";
+                        resultsBody.style.display = "block";
+                        resultsBody.innerHTML = similarWords
+                            .map(word => `<div class="result-item">${word}</div>`)
+                            .join("");
+                    } else {
+                        resultsHeader.style.display = "none";
+                        resultsBody.style.display = "none";
+                        errorDiv.innerHTML = similarWords;
+                    }
+                } else {
+                    throw new Error("Server error");
+                }
+            } catch (error) {
+                resultsHeader.style.display = "none";
+                resultsBody.style.display = "none";
+                errorDiv.innerHTML = "Error: Unable to fetch results. Please try again later.";
+            }
+        };
+    </script>
+</body>
+</html>
