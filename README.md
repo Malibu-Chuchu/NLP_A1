@@ -1,4 +1,4 @@
-<img width="1440" alt="Screenshot 2568-01-20 at 2 00 32 AM" src="https://github.com/user-attachments/assets/6e16a9cc-f105-45ea-84d1-1920864b28d4" /># NLP Assignment1 That's What i like
+# NLP Assignment1 That's What i like
 ## st124952 Patsachon Pattakulpong
 ## What you going to get from me! 😊
 In this project i will find the top10 similar words! 
@@ -26,8 +26,7 @@ So, my conclusion i will choose Skipgram model which is model1. It has the least
 - python app.py
 
 ## My Application Demo
-![screenshot](<img width="1440" alt="Screenshot 2568-01-20 at 2 00 32 AM" src="https://github.com/user-attachments/assets/e7212d11-1bd2-4a0a-a0ab-8ebdbd782ca1" />
-)
+<img width="1440" alt="Screenshot 2568-01-20 at 2 00 32 AM" src="https://github.com/user-attachments/assets/e7212d11-1bd2-4a0a-a0ab-8ebdbd782ca1" />
 
 
 ## References
