@@ -1,4 +1,4 @@
-# NLP Assignment1 That's What i like
+<img width="1440" alt="Screenshot 2568-01-20 at 2 00 32 AM" src="https://github.com/user-attachments/assets/6e16a9cc-f105-45ea-84d1-1920864b28d4" /># NLP Assignment1 That's What i like
 ## st124952 Patsachon Pattakulpong
 ## What you going to get from me! 😊
 In this project i will find the top10 similar words! 
@@ -8,28 +8,33 @@ In this project i will find the top10 similar words!
 
 | Model             | Window Size | Training Loss | Training Time | Syntactic Accuracy | Semantic Accuracy |
 |-------------------|-------------|---------------|---------------|--------------------|-------------------|
-| Skipgram (model1)          | 2     | 9.559290        | 5m 41s      | 0.00%            | 0.00%           |
-| Skipgram (NEG) (model2)    | 2     | 2.230449        | 5m 35s       | 0.00%            | 0.00%           |
-| Glove (model3)            | 2     | 0.131319       | 1m 6s      | 0.00%            | 0.00%           |
-| Glove (Gensim) (model4)    | -     | -       | -       | 55.45%            | 93.87%           |
+| Skipgram (model 1)          | 2     | 9.559290        | 5m 41s      | 0.00%            | 0.00%           |
+| Skipgram (NEG) (model 2)    | 2     | 2.230449        | 5m 35s       | 0.00%            | 0.00%           |
+| Glove (model 3)            | 2     | 0.131319       | 1m 6s      | 0.00%            | 0.00%           |
+| Glove (Gensim) (model 4)    | -     | -       | -       | 55.45%            | 93.87%           |
 
 ## Correlation Scores
 
-| Model               | Skipgram | Skipgram (NEG) | GloVe | GloVe (Gensim) |
+| Model               | Skipgram (model 1)  | Skipgram (NEG) (model 2) | Glove (model 3)  | Glove (Gensim) (model 4) |
 |---------------------|-----------|----------------|-------|----------------|
 | MSE            | -0.0100   | -0.0562        | -0.0735 | 0.6019      |
 
 - In this scenario, firstly i want to choose model4 which is GloVe(Gensim) but the Keyvector has no attributes for word embedding.
 So, my conclusion i will choose Skipgram model which is model1. It has the least negative correlation among the four, indicating it may slightly outperform the others in aligning with others data.
 
-## References Data Source
-- NLTK Datasets using brown corpus : https://www.nltk.org/
-- For model comparison Syntactic and Semantic Accuracy : https://www.fit.vut.cz/person/imikolov/public/rnnlm/word-test.v1.txt
-- For model comparison correlation scores (wordsim_similarity_goldstandard.txt) : http://alfonseca.org/eng/research/wordsim353.html 
-
-
 ## How to run the application:
-python app.py
+- python app.py
 
 ## My Application Demo
-![App Screenshot](<img width="1440" alt="Screenshot 2568-01-20 at 2 00 32 AM" src="https://github.com/user-attachments/assets/41828a50-ffd7-493e-a461-995d849a98e2" />)
+![screenshot](<img width="1440" alt="Screenshot 2568-01-20 at 2 00 32 AM" src="https://github.com/user-attachments/assets/e7212d11-1bd2-4a0a-a0ab-8ebdbd782ca1" />
+)
+
+
+## References
+1. https://arxiv.org/pdf/1301.3781.pdf
+2. https://aclanthology.org/D14-1162.pdf
+3. https://www.fit.vutbr.cz/˜imikolov/rnnlm/word-test.v1.txt
+4. http://alfonseca.org/eng/research/wordsim353.htm/
+
+
+
