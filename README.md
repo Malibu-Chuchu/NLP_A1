@@ -22,8 +22,7 @@ In this project i will find the top10 similar words!
 - In this scenario, firstly i want to choose model4 which is GloVe(Gensim) but the Keyvector has no attributes for word embedding.
 So, my conclusion i will choose Skipgram model which is model1. It has the least negative correlation among the four, indicating it may slightly outperform the others in aligning with others data.
 
-## How to run the application:
-- python app.py
+## How to run the application: python app.py
 
 ## My Application Demo
 <img width="1440" alt="Screenshot 2568-01-20 at 2 00 32 AM" src="https://github.com/user-attachments/assets/e7212d11-1bd2-4a0a-a0ab-8ebdbd782ca1" />
